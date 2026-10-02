@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
     <style>
         * {
@@ -50,6 +51,8 @@
             backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.05);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1000;
         }
 
         .logo {
@@ -57,6 +60,15 @@
             font-weight: 700;
             color: #00d9ff;
             text-shadow: 0 0 20px #00d9ff;
+        }
+
+
+        .logo-image {
+            width: 150px;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(0, 217, 255, 0.55));
         }
 
         .logo span {
@@ -78,6 +90,15 @@
         .nav a:hover {
             color: #00d9ff;
             text-shadow: 0 0 15px #00d9ff;
+        }
+
+        /* Mobile Menu Toggle Icon */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: #00d9ff;
+            cursor: pointer;
+            z-index: 1001;
         }
 
         /* Hero Section */
@@ -149,6 +170,11 @@
             font-weight: 600;
         }
 
+        .primary a {
+            text-decoration: none;
+            color: inherit;
+        }
+
         .primary:hover {
             transform: translateY(-5px);
             box-shadow: 0 0 25px #00d9ff;
@@ -158,6 +184,7 @@
             background: transparent;
             border: 2px solid #00d9ff;
             color: #00d9ff;
+            text-decoration: none;
         }
 
         .secondary:hover {
@@ -243,11 +270,335 @@
         }
 
 
+
+        /* About + Skills */
+        #about {
+            width: 100%;
+            max-width: 1100px;
+            margin: 30px auto 0;
+            padding: 45px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(0, 217, 255, 0.16);
+            border-radius: 25px;
+            backdrop-filter: blur(14px);
+            box-shadow: 0 0 35px rgba(0, 217, 255, 0.08);
+        }
+
+        #about h2,
+        #projects h2,
+        #contact h2 {
+            color: #00d9ff;
+            text-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
+            margin-bottom: 18px;
+            font-size: 2rem;
+        }
+
+        #about p {
+            color: #cfcfcf;
+            line-height: 1.8;
+        }
+
+        .skills-title {
+            margin-top: 30px;
+            margin-bottom: 18px;
+            font-size: 1.35rem;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        .skill {
+            min-width: 125px;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: 1px solid rgba(0, 217, 255, 0.22);
+            border-radius: 15px;
+            background: rgba(0, 217, 255, 0.04);
+            color: white;
+            transition: .35s;
+        }
+
+        .skill i {
+            font-size: 28px;
+            color: #00d9ff;
+        }
+
+        .skill:hover {
+            transform: translateY(-6px);
+            border-color: #00d9ff;
+            box-shadow: 0 0 22px rgba(0, 217, 255, 0.25);
+        }
+
+        /* Projects */
+        #projects {
+            width: 100%;
+            padding: 80px 8%;
+        }
+
+        .section-subtitle {
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .project-card {
+            overflow: hidden;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            backdrop-filter: blur(14px);
+            transition: .35s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 217, 255, 0.55);
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.16);
+        }
+
+        .project-image {
+            height: 220px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 30% 25%, rgba(0, 217, 255, .35), transparent 30%),
+                linear-gradient(135deg, #07131a, #0a0a0a 55%, #001f2b);
+        }
+
+        .project-image-link {
+            position: absolute;
+            inset: 0;
+            display: block;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        .project-image-link img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform .45s ease, filter .45s ease;
+        }
+
+        .project-card:hover .project-image-link img {
+            transform: scale(1.04);
+            filter: brightness(1.08);
+        }
+
+        .project-image::before {
+            content: "";
+            position: absolute;
+            inset: 18px;
+            border: 1px solid rgba(0, 217, 255, .35);
+            border-radius: 14px;
+            box-shadow: inset 0 0 30px rgba(0, 217, 255, .08);
+        }
+
+        .prototype-window {
+            width: 70%;
+            height: 62%;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 217, 255, .55);
+            background: rgba(3, 10, 14, .88);
+            box-shadow: 0 0 25px rgba(0, 217, 255, .18);
+            position: relative;
+            padding: 38px 18px 18px;
+        }
+
+        .prototype-window::before {
+            content: "●  ●  ●";
+            position: absolute;
+            top: 10px;
+            left: 14px;
+            color: #00d9ff;
+            font-size: 10px;
+            letter-spacing: 3px;
+        }
+
+        .prototype-lines {
+            display: grid;
+            gap: 10px;
+        }
+
+        .prototype-lines span {
+            height: 8px;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #00d9ff, rgba(0, 217, 255, .08));
+        }
+
+        .prototype-lines span:nth-child(2) { width: 75%; }
+        .prototype-lines span:nth-child(3) { width: 55%; }
+        .prototype-lines span:nth-child(4) { width: 88%; }
+
+        .project-number {
+            position: absolute;
+            right: 20px;
+            bottom: 14px;
+            color: rgba(255,255,255,.45);
+            font-size: 12px;
+            letter-spacing: 2px;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .project-content {
+            padding: 24px;
+        }
+
+        .project-content h3 {
+            font-size: 1.35rem;
+            margin-bottom: 8px;
+        }
+
+        .project-content p {
+            color: #bdbdbd;
+            line-height: 1.6;
+            font-size: .95rem;
+            margin-bottom: 18px;
+        }
+
+        .project-link {
+            color: #00d9ff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .project-link:hover {
+            text-shadow: 0 0 12px #00d9ff;
+        }
+
+        /* Contact */
+        #contact {
+            width: 100%;
+            max-width: 850px;
+            margin: 10px auto 80px;
+            padding: 45px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(0, 217, 255, 0.16);
+            border-radius: 25px;
+            backdrop-filter: blur(14px);
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 16px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px 17px;
+            border: 1px solid rgba(255,255,255,.14);
+            border-radius: 12px;
+            outline: none;
+            background: rgba(0,0,0,.35);
+            color: white;
+            font-family: inherit;
+            transition: .3s;
+        }
+
+        .contact-form textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #00d9ff;
+            box-shadow: 0 0 15px rgba(0, 217, 255, .14);
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: #888;
+        }
+
+        .send-btn {
+            justify-self: start;
+            padding: 13px 30px;
+            border: none;
+            border-radius: 30px;
+            background: #00d9ff;
+            color: #001014;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 22px rgba(0, 217, 255, .45);
+        }
+
+        #form-status {
+            color: #00d9ff;
+            min-height: 20px;
+            font-size: .9rem;
+        }
+
         @media(max-width:900px) {
 
             .main {
-                flex-direction: column-reverse;
+                flex-direction: column;
                 text-align: center;
+                padding: 40px 5%;
+                gap: 30px;
+            }
+
+            .written {
+                order: 2;
+            }
+
+            .img {
+                order: 1;
+                width: 280px;
+                height: 350px;
+                margin: 0 auto;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 8%;
+                width: 200px;
+                background: rgba(15, 15, 15, 0.95);
+                border: 1px solid rgba(0, 217, 255, 0.3);
+                border-radius: 15px;
+                padding: 20px;
+                gap: 15px;
+                text-align: center;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+            }
+
+            .nav.active {
+                display: flex;
             }
 
             .name {
@@ -258,13 +609,25 @@
                 justify-content: center;
             }
 
-            .img {
-                width: 300px;
-                height: 380px;
+            .logo-image {
+                width: 125px;
             }
 
-            .nav {
-                display: none;
+            #about,
+            #contact {
+                padding: 28px 20px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            #projects {
+                padding: 60px 5%;
+            }
+
+            .skill {
+                min-width: 105px;
             }
 
         }
@@ -276,18 +639,28 @@
     <nav class="navbar">
 
         <div class="logo">
-            BDD<span></span>
+            <a href="#"><img src="logo.png" alt="BIBEK" class="logo-image"></a>
         </div>
 
-        <div class="nav">
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <div class="nav" id="nav-menu">
             <a href="#">Home</a>
-            <a href="https://www.facebook.com/bibek.dhawal.31">About Me</a>
-            <a href="https://forms.gle/mFUaCiUNmmkKrW7s5">Contact</a>
+            <a href="#about">About Me</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
         </div>
 
     </nav>
 
     <section class="main">
+
+        <div class="img">
+            <img src="picture1.jpeg" alt="Bibek">
+
+        </div>
 
         <div class="written">
 
@@ -310,42 +683,143 @@
             </p>
 
             <div class="buttons">
-
-                <button class="btn primary">
-                    About Me
+                  <button class="btn primary">
+                    <a href="#about">About Me</a>
                 </button>
+                <button class="btn primary">
+                    <a href="#" style="text-decoration: none; color: black;">
+                        Download Resume
+                    </a>
+                </button>
+              
 
-                <a href="https://www.instagram.com/mr_dhawal16/"><button class="btn secondary">
+                <a href="https://www.linkedin.com/in/bibekdhawal/"><button class="btn secondary">
                     Follow Me
                 </button></a>
 
             </div>
 
         </div>
-        <div class="img">
-            <img src="picture.jpeg" alt="Bibek">
 
+    </section>
+
+    <div id="about">
+        <h2>ABOUT ME</h2>
+        <p>I am a passionate software developer with a strong interest in cybersecurity and web development. I enjoy creating innovative solutions and staying up-to-date with the latest technologies.
+            <br>
+            I am student of SRM University, pursuing a degree in Computer Science and Engineering. I have experience in programming languages, and I am always eager to learn and take on new challenges.
+        </p>
+
+        <h3 class="skills-title">SKILLS</h3>
+        <div class="skills">
+            <div class="skill"><i class="devicon-c-plain"></i><span>C Language</span></div>
+            <div class="skill"><i class="devicon-java-plain"></i><span>Java</span></div>
+            <div class="skill"><i class="devicon-mysql-original"></i><span>SQL</span></div>
+            <div class="skill"><i class="devicon-html5-plain"></i><span>HTML</span></div>
+            <div class="skill"><i class="devicon-css3-plain"></i><span>CSS</span></div>
         </div>
+    </div>
 
+    <section id="projects">
+        <h2>PROJECTS</h2>
+        <p class="section-subtitle">A few Projects from my development journey.</p>
+
+        <div class="projects-grid">
+            <article class="project-card">
+                <div class="project-image">
+                    <a class="project-image-link"
+                       href="https://periodicx-zeta.vercel.app/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="Open Project 01 - PeriodicX">
+                        <img src="Project-01.png" alt="Project 01 - PeriodicX">
+                    </a>
+                    <span class="project-number">Project 01</span>
+                </div>
+                <div class="project-content">
+                    <h3>PeriodicX</h3>
+                    <p>Explore the world of elements Discover the properties, history, uses, and fascinating facts behind all 118 chemical elements — from hydrogen's fusion fire to oganesson's fraction-of-a-second existence.</p>
+                    <a class="project-link" href="https://periodicx-zeta.vercel.app/" aria-label="Project 1 link" target="_blank">View PeriodicX →</a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-image">
+                    <a class="project-image-link"
+                       href="https://www.bibekdhawal.com.np"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="Open Project 02 - Portfolio">
+                        <img src="Projects-02.png" alt="Project 02 - Portfolio">
+                    </a>
+                    <span class="project-number">Project-02</span>
+                </div>
+                <div class="project-content">
+                    <h3>Portfolio</h3>
+                    <p>Passionate software developer focused on building modern, responsive and futuristic digital experiences. I enjoy web development, programming and exploring new technologies.</p>
+                    <a class="project-link" href="https://www.bibekdhawal.com.np" aria-label="Project 2 link" target="_blank">View Portfolio →</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>SEND MAIL TO BIBEK</h2>
+        <p class="section-subtitle">Send me a message directly from this portfolio.</p>
+
+        <form class="contact-form" id="contact-form">
+            <input type="text" name="from_name" placeholder="Name *" required autocomplete="name">
+            <input type="tel" name="phone" placeholder="Phone number *" required autocomplete="tel">
+            <input type="email" name="email" placeholder="Email *" required autocomplete="email">
+            <textarea name="message" placeholder="Message"></textarea>
+
+            <button type="submit" class="send-btn">Send Message</button>
+            <div id="form-status"></div>
+        </form>
     </section>
 
     <footer class="footer">
 
         <div class="links">
             <a href="https://github.com/bibek-eh"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/bibek-dhawal-084286414?utm_source=share_via&utm_content=profile&utm_medium=member_android"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.linkedin.com/in/bibekdhawal/"><i class="fab fa-linkedin"></i></a>
             <a href="https://www.instagram.com/mr_dhawal16/"><i class="fab fa-instagram"></i></a>
             <a href="https://www.facebook.com/bibek.dhawal.31"><i class="fab fa-facebook"></i></a>
 
         </div>
 
         <p>
-            Copyright © 2026 | All Rights Reserved
+            © Hack4Fun 2026 | All Rights Reserved
         </p>
 
     </footer>
 
+
     <script>
+        // Toggle mobile menu
+        const menuToggle = document.getElementById("menu-toggle");
+        const navMenu = document.getElementById("nav-menu");
+        const menuIcon = menuToggle.querySelector("i");
+
+        menuToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+            if (navMenu.classList.contains("active")) {
+                menuIcon.classList.remove("fa-bars");
+                menuIcon.classList.add("fa-xmark");
+            } else {
+                menuIcon.classList.remove("fa-xmark");
+                menuIcon.classList.add("fa-bars");
+            }
+        });
+
+        // Close menu when clicking links
+        document.querySelectorAll(".nav a").forEach(link => {
+            link.addEventListener("click", () => {
+                navMenu.classList.remove("active");
+                menuIcon.classList.remove("fa-xmark");
+                menuIcon.classList.add("fa-bars");
+            });
+        });
 
         const textElement =
             document.getElementById("typing-text");
@@ -354,7 +828,8 @@
             "Ethical Hacker",
             "Web Developer",
             "Programmer",
-            "Tech Enthusiast"
+            "Tech Enthusiast",
+            "Cybersecurity Researcher"
         ];
 
         let textIndex = 0;
@@ -400,6 +875,59 @@
         }
 
         typeEffect();
+
+
+        // Contact form -> FormSubmit AJAX API
+        // Messages are sent to: dhawalbibek7@gmail.com
+        // The visitor's email is sent as _replyto so you can reply directly.
+        // FormSubmit must be activated/verified once for the receiving email address.
+        const contactForm = document.getElementById("contact-form");
+        const formStatus = document.getElementById("form-status");
+
+        contactForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const sendButton = contactForm.querySelector(".send-btn");
+            sendButton.disabled = true;
+            sendButton.textContent = "Sending...";
+            formStatus.textContent = "";
+
+            const formData = new FormData(contactForm);
+            formData.append("_subject", "New Portfolio Message for Bibek");
+            formData.append("_replyto", formData.get("email"));
+            formData.append("_captcha", "false");
+            formData.append("_template", "table");
+
+            try {
+                const response = await fetch(
+                    "https://formsubmit.co/ajax/dhawalbibek7@gmail.com",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Accept": "application/json"
+                        },
+                        body: formData
+                    }
+                );
+
+                const result = await response.json();
+
+                if (!response.ok || result.success === false) {
+                    throw new Error(result.message || "Form submission failed");
+                }
+
+                formStatus.textContent =
+                    "Message sent successfully! Thank you for contacting me.";
+                contactForm.reset();
+            } catch (error) {
+                console.error("Contact form error:", error);
+                formStatus.textContent =
+                    "Message could not be sent. Please check your details and try again.";
+            } finally {
+                sendButton.disabled = false;
+                sendButton.textContent = "Send Message";
+            }
+        });
 
     </script>
 
