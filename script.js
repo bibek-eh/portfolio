@@ -1,5 +1,5 @@
+// Script file of portfolio
 
-        // Toggle mobile menu
         const menuToggle = document.getElementById("menu-toggle");
         const navMenu = document.getElementById("nav-menu");
         const menuIcon = menuToggle.querySelector("i");
